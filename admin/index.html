@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админ — Сункар</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal: #006E56; --teal-light: #E1F5EE; --red: #E30613;
+      --gray-bg: #F5F4F1; --gray-line: #E0DED9; --text: #1A1A18; --text-sec: #6B6A65;
+    }
+    body { font-family: 'IBM Plex Sans', sans-serif; background: var(--gray-bg); color: var(--text); }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font: inherit; }
+
+    /* Auth */
+    .auth-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
+    .auth-card { background: white; border-radius: 12px; padding: 40px; width: 100%; max-width: 400px; box-shadow: 0 4px 24px rgba(0,0,0,.1); }
+    .auth-card h1 { font-size: 1.4rem; margin-bottom: 8px; }
+    .auth-card p { color: var(--text-sec); font-size: .9rem; margin-bottom: 28px; }
+
+    /* Layout */
+    .admin-layout { display: none; min-height: 100vh; }
+    .admin-layout.visible { display: flex; }
+    .sidebar { width: 240px; background: var(--teal); color: white; padding: 24px 0; flex-shrink: 0; min-height: 100vh; }
+    .sidebar__brand { padding: 0 24px 24px; font-size: 1.1rem; font-weight: 600; border-bottom: 1px solid rgba(255,255,255,.15); margin-bottom: 16px; }
+    .sidebar__nav a { display: block; padding: 12px 24px; color: rgba(255,255,255,.8); font-size: .9rem; transition: background .2s; }
+    .sidebar__nav a:hover, .sidebar__nav a.active { background: rgba(255,255,255,.1); color: white; }
+    .sidebar__logout { margin-top: auto; padding: 24px; border-top: 1px solid rgba(255,255,255,.15); }
+    .sidebar__logout button { color: rgba(255,255,255,.7); font-size: .85rem; background: none; border: none; }
+
+    /* Main */
+    .admin-main { flex: 1; padding: 32px; overflow-y: auto; }
+    .admin-main h2 { font-size: 1.4rem; margin-bottom: 24px; }
+
+    /* Tab panels */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Form */
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: .875rem; font-weight: 500; margin-bottom: 6px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 10px 14px; border: 1.5px solid var(--gray-line);
+      border-radius: 8px; font: inherit; font-size: .9rem; outline: none; transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--teal); }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .schedule-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .schedule-day label { font-size: .75rem; color: var(--text-sec); margin-bottom: 4px; }
+    .schedule-day input { font-size: .78rem; padding: 6px 8px; }
+
+    /* Table */
+    .data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+    .data-table th { text-align: left; padding: 12px 16px; background: var(--gray-bg); font-size: .8rem; color: var(--text-sec); font-weight: 600; }
+    .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-line); font-size: .875rem; vertical-align: middle; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; border-radius: 8px; font: inherit; font-size: .9rem; font-weight: 500; cursor: pointer; border: none; transition: all .2s; }
+    .btn--primary { background: var(--teal); color: white; }
+    .btn--primary:hover { opacity: .9; }
+    .btn--outline { border: 1.5px solid var(--gray-line); background: white; color: var(--text); }
+    .btn--outline:hover { border-color: var(--teal); }
+    .btn--danger { background: #fde8e9; color: var(--red); }
+    .btn--sm { padding: 6px 12px; font-size: .8rem; }
+    .btn-group { display: flex; gap: 8px; }
+    .form-actions { display: flex; gap: 12px; margin-top: 8px; }
+
+    /* Card form */
+    .form-card { background: white; border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+    .form-card h3 { font-size: 1rem; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--gray-line); }
+
+    /* Status */
+    .status-msg { padding: 10px 16px; border-radius: 8px; font-size: .875rem; margin-bottom: 16px; display: none; }
+    .status-msg.success { background: var(--teal-light); color: var(--teal); display: block; }
+    .status-msg.error { background: #fde8e9; color: var(--red); display: block; }
+
+    /* Checkbox */
+    .checkbox-group { display: flex; align-items: center; gap: 8px; }
+    .checkbox-group input[type=checkbox] { width: 18px; height: 18px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- AUTH SCREEN -->
+  <div class="auth-screen" id="authScreen">
+    <div class="auth-card">
+      <h1>Вход в панель</h1>
+      <p>Сункар — система управления контентом</p>
+      <div class="form-group"><label>Email</label><input type="email" id="authEmail" placeholder="admin@example.com" /></div>
+      <div class="form-group"><label>Пароль</label><input type="password" id="authPassword" /></div>
+      <div id="authError" class="status-msg error"></div>
+      <button class="btn btn--primary" style="width:100%;margin-top:8px" onclick="login()">Войти</button>
+    </div>
+  </div>
+
+  <!-- ADMIN LAYOUT -->
+  <div class="admin-layout" id="adminLayout">
+    <aside class="sidebar">
+      <div class="sidebar__brand">Сункар Admin</div>
+      <nav class="sidebar__nav">
+        <a href="#" class="active" onclick="showTab('doctors', this)">Врачи</a>
+        <a href="#" onclick="showTab('news', this)">Новости</a>
+      </nav>
+      <div class="sidebar__logout">
+        <button onclick="logout()">← Выйти</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+
+      <!-- DOCTORS TAB -->
+      <div class="tab-panel active" id="tab-doctors">
+        <h2>Врачи</h2>
+        <div id="doctorStatus" class="status-msg"></div>
+
+        <div class="form-card">
+          <h3 id="doctorFormTitle">Добавить врача</h3>
+          <input type="hidden" id="doctorId" />
+          <div class="form-row">
+            <div class="form-group"><label>Имя (RU)</label><input type="text" id="dNameRu" placeholder="Иванова Светлана Петровна" /></div>
+            <div class="form-group"><label>Имя (KZ)</label><input type="text" id="dNameKz" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Специальность (RU)</label><input type="text" id="dSpecRu" placeholder="Терапевт" /></div>
+            <div class="form-group"><label>Специальность (KZ)</label><input type="text" id="dSpecKz" /></div>
+          </div>
+          <div class="form-group"><label>Фото (URL)</label><input type="url" id="dPhoto" placeholder="https://..." /></div>
+          <div class="form-group"><label>Порядок отображения</label><input type="number" id="dOrder" value="1" min="1" /></div>
+          <div class="form-group">
+            <label>Расписание</label>
+            <div class="schedule-grid">
+              <div class="schedule-day"><label>Пн</label><input type="text" id="sMon" placeholder="09–13" /></div>
+              <div class="schedule-day"><label>Вт</label><input type="text" id="sTue" placeholder="09–13" /></div>
+              <div class="schedule-day"><label>Ср</label><input type="text" id="sWed" placeholder="09–13" /></div>
+              <div class="schedule-day"><label>Чт</label><input type="text" id="sThu" placeholder="09–13" /></div>
+              <div class="schedule-day"><label>Пт</label><input type="text" id="sFri" placeholder="09–13" /></div>
+              <div class="schedule-day"><label>Сб</label><input type="text" id="sSat" placeholder="" /></div>
+              <div class="schedule-day"><label>Вс</label><input type="text" id="sSun" placeholder="" /></div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn--primary" onclick="saveDoctor()">Сохранить</button>
+            <button class="btn btn--outline" onclick="resetDoctorForm()">Отмена</button>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead><tr><th>Имя</th><th>Специальность</th><th>Порядок</th><th>Действия</th></tr></thead>
+          <tbody id="doctorsTableBody"><tr><td colspan="4" style="color:var(--text-sec)">Загрузка...</td></tr></tbody>
+        </table>
+      </div>
+
+      <!-- NEWS TAB -->
+      <div class="tab-panel" id="tab-news">
+        <h2>Новости и объявления</h2>
+        <div id="newsStatus" class="status-msg"></div>
+
+        <div class="form-card">
+          <h3 id="newsFormTitle">Добавить новость</h3>
+          <input type="hidden" id="newsId" />
+          <div class="form-row">
+            <div class="form-group"><label>Заголовок (RU)</label><input type="text" id="nTitleRu" /></div>
+            <div class="form-group"><label>Заголовок (KZ)</label><input type="text" id="nTitleKz" /></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Текст (RU)</label><textarea id="nBodyRu"></textarea></div>
+            <div class="form-group"><label>Текст (KZ)</label><textarea id="nBodyKz"></textarea></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Дата</label><input type="date" id="nDate" /></div>
+            <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:2px">
+              <div class="checkbox-group"><input type="checkbox" id="nPinned" /><label for="nPinned">Закрепить (важное)</label></div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn--primary" onclick="saveNews()">Сохранить</button>
+            <button class="btn btn--outline" onclick="resetNewsForm()">Отмена</button>
+          </div>
+        </div>
+
+        <table class="data-table">
+          <thead><tr><th>Заголовок</th><th>Дата</th><th>Закреплено</th><th>Действия</th></tr></thead>
+          <tbody id="newsTableBody"><tr><td colspan="4" style="color:var(--text-sec)">Загрузка...</td></tr></tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase.js"></script>
+  <script>
+    // ── Auth ──
+    const ADMIN_EMAIL = 'admin@sunkar-emkhana.kz';
+    const ADMIN_PASS  = localStorage.getItem('adminPass') || '';
+
+    function login() {
+      const email = document.getElementById('authEmail').value.trim();
+      const pass  = document.getElementById('authPassword').value;
+      // Simple password check — replace with Supabase Auth if needed
+      if (email === ADMIN_EMAIL && pass === 'sunkar2025') {
+        localStorage.setItem('adminAuth', '1');
+        showAdmin();
+      } else {
+        const err = document.getElementById('authError');
+        err.textContent = 'Неверный email или пароль';
+        err.classList.add('error');
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('adminAuth');
+      document.getElementById('adminLayout').classList.remove('visible');
+      document.getElementById('authScreen').style.display = 'flex';
+    }
+
+    function showAdmin() {
+      document.getElementById('authScreen').style.display = 'none';
+      document.getElementById('adminLayout').classList.add('visible');
+      loadDoctors();
+      loadNews();
+    }
+
+    if (localStorage.getItem('adminAuth') === '1') showAdmin();
+
+    // ── Tabs ──
+    function showTab(name, el) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.sidebar__nav a').forEach(a => a.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      el.classList.add('active');
+    }
+
+    // ── Status ──
+    function showStatus(id, msg, type) {
+      const el = document.getElementById(id);
+      el.textContent = msg;
+      el.className = 'status-msg ' + type;
+      setTimeout(() => { el.className = 'status-msg'; }, 3000);
+    }
+
+    // ── DOCTORS ──
+    let editingDoctorId = null;
+
+    async function loadDoctors() {
+      const { data } = await db.from('doctors').select('*').order('order', { ascending: true });
+      const tbody = document.getElementById('doctorsTableBody');
+      if (!data?.length) { tbody.innerHTML = '<tr><td colspan="4" style="color:var(--text-sec)">Нет врачей</td></tr>'; return; }
+      tbody.innerHTML = data.map(d => `
+        <tr>
+          <td>${d.name_ru}</td>
+          <td>${d.specialty_ru || '—'}</td>
+          <td>${d.order}</td>
+          <td><div class="btn-group">
+            <button class="btn btn--outline btn--sm" onclick='editDoctor(${JSON.stringify(d)})'>Редактировать</button>
+            <button class="btn btn--danger btn--sm" onclick="deleteDoctor('${d.id}')">Удалить</button>
+          </div></td>
+        </tr>`).join('');
+    }
+
+    function editDoctor(d) {
+      editingDoctorId = d.id;
+      document.getElementById('doctorFormTitle').textContent = 'Редактировать врача';
+      document.getElementById('dNameRu').value  = d.name_ru || '';
+      document.getElementById('dNameKz').value  = d.name_kz || '';
+      document.getElementById('dSpecRu').value  = d.specialty_ru || '';
+      document.getElementById('dSpecKz').value  = d.specialty_kz || '';
+      document.getElementById('dPhoto').value   = d.photo || '';
+      document.getElementById('dOrder').value   = d.order || 1;
+      document.getElementById('sMon').value = d.schedule?.mon || '';
+      document.getElementById('sTue').value = d.schedule?.tue || '';
+      document.getElementById('sWed').value = d.schedule?.wed || '';
+      document.getElementById('sThu').value = d.schedule?.thu || '';
+      document.getElementById('sFri').value = d.schedule?.fri || '';
+      document.getElementById('sSat').value = d.schedule?.sat || '';
+      document.getElementById('sSun').value = d.schedule?.sun || '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetDoctorForm() {
+      editingDoctorId = null;
+      document.getElementById('doctorFormTitle').textContent = 'Добавить врача';
+      ['dNameRu','dNameKz','dSpecRu','dSpecKz','dPhoto','sMon','sTue','sWed','sThu','sFri','sSat','sSun'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('dOrder').value = 1;
+    }
+
+    async function saveDoctor() {
+      const schedule = {};
+      ['mon','tue','wed','thu','fri','sat','sun'].forEach(day => {
+        const v = document.getElementById('s' + day.charAt(0).toUpperCase() + day.slice(1)).value.trim();
+        if (v) schedule[day] = v;
+      });
+
+      const payload = {
+        name_ru: document.getElementById('dNameRu').value.trim(),
+        name_kz: document.getElementById('dNameKz').value.trim(),
+        specialty_ru: document.getElementById('dSpecRu').value.trim(),
+        specialty_kz: document.getElementById('dSpecKz').value.trim(),
+        photo: document.getElementById('dPhoto').value.trim() || null,
+        order: parseInt(document.getElementById('dOrder').value) || 1,
+        schedule: Object.keys(schedule).length ? schedule : null,
+      };
+
+      if (!payload.name_ru) { showStatus('doctorStatus', 'Введите имя врача', 'error'); return; }
+
+      const { error } = editingDoctorId
+        ? await db.from('doctors').update(payload).eq('id', editingDoctorId)
+        : await db.from('doctors').insert(payload);
+
+      if (error) { showStatus('doctorStatus', 'Ошибка: ' + error.message, 'error'); return; }
+      showStatus('doctorStatus', 'Сохранено!', 'success');
+      resetDoctorForm();
+      loadDoctors();
+    }
+
+    async function deleteDoctor(id) {
+      if (!confirm('Удалить врача?')) return;
+      await db.from('doctors').delete().eq('id', id);
+      loadDoctors();
+    }
+
+    // ── NEWS ──
+    let editingNewsId = null;
+
+    async function loadNews() {
+      const { data } = await db.from('news').select('*').order('date', { ascending: false });
+      const tbody = document.getElementById('newsTableBody');
+      if (!data?.length) { tbody.innerHTML = '<tr><td colspan="4" style="color:var(--text-sec)">Нет новостей</td></tr>'; return; }
+      tbody.innerHTML = data.map(n => `
+        <tr>
+          <td>${n.title_ru}</td>
+          <td>${new Date(n.date).toLocaleDateString('ru-RU')}</td>
+          <td>${n.pinned ? '📌' : '—'}</td>
+          <td><div class="btn-group">
+            <button class="btn btn--outline btn--sm" onclick='editNews(${JSON.stringify(n)})'>Редактировать</button>
+            <button class="btn btn--danger btn--sm" onclick="deleteNews('${n.id}')">Удалить</button>
+          </div></td>
+        </tr>`).join('');
+    }
+
+    function editNews(n) {
+      editingNewsId = n.id;
+      showTab('news', document.querySelector('.sidebar__nav a:nth-child(2)'));
+      document.getElementById('newsFormTitle').textContent = 'Редактировать новость';
+      document.getElementById('nTitleRu').value = n.title_ru || '';
+      document.getElementById('nTitleKz').value = n.title_kz || '';
+      document.getElementById('nBodyRu').value  = n.body_ru  || '';
+      document.getElementById('nBodyKz').value  = n.body_kz  || '';
+      document.getElementById('nDate').value    = n.date ? n.date.split('T')[0] : '';
+      document.getElementById('nPinned').checked = !!n.pinned;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetNewsForm() {
+      editingNewsId = null;
+      document.getElementById('newsFormTitle').textContent = 'Добавить новость';
+      ['nTitleRu','nTitleKz','nBodyRu','nBodyKz','nDate'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('nPinned').checked = false;
+    }
+
+    async function saveNews() {
+      const payload = {
+        title_ru: document.getElementById('nTitleRu').value.trim(),
+        title_kz: document.getElementById('nTitleKz').value.trim(),
+        body_ru:  document.getElementById('nBodyRu').value.trim(),
+        body_kz:  document.getElementById('nBodyKz').value.trim(),
+        date:     document.getElementById('nDate').value || new Date().toISOString(),
+        pinned:   document.getElementById('nPinned').checked,
+      };
+
+      if (!payload.title_ru) { showStatus('newsStatus', 'Введите заголовок', 'error'); return; }
+
+      const { error } = editingNewsId
+        ? await db.from('news').update(payload).eq('id', editingNewsId)
+        : await db.from('news').insert(payload);
+
+      if (error) { showStatus('newsStatus', 'Ошибка: ' + error.message, 'error'); return; }
+      showStatus('newsStatus', 'Сохранено!', 'success');
+      resetNewsForm();
+      loadNews();
+    }
+
+    async function deleteNews(id) {
+      if (!confirm('Удалить новость?')) return;
+      await db.from('news').delete().eq('id', id);
+      loadNews();
+    }
+
+    // Enter key on auth
+    document.getElementById('authPassword').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+  </script>
+</body>
+</html>

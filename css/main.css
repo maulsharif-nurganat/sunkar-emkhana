@@ -340,6 +340,16 @@ body {
 
 .doctors-loading { color: var(--text-sec); }
 
+.doctors-grid--full { grid-template-columns: repeat(3, 1fr); }
+.doctor-card--full { flex-direction: row; align-items: flex-start; text-align: left; gap: 20px; }
+.doctor-card--full .doctor-card__photo { flex-shrink: 0; }
+.doctor-card__info { flex: 1; }
+.doctor-card__schedule-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.news-grid--full { grid-template-columns: 1fr; }
+
+@media (max-width: 1200px) { .doctors-grid--full { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px)  { .doctors-grid--full { grid-template-columns: 1fr; } .doctor-card--full { flex-direction: column; } }
+
 /* ── Services ── */
 .services-note {
   font-size: .9rem;

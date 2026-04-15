@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Врач — Сункар</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <style>
+    .doctor-profile { display: grid; grid-template-columns: 240px 1fr; gap: 48px; align-items: start; }
+    .doctor-profile__photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; background: var(--teal-light); display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 600; color: var(--teal); overflow: hidden; }
+    .doctor-profile__photo img { width: 100%; height: 100%; object-fit: cover; }
+    .doctor-profile__name { font-size: 1.6rem; font-weight: 600; margin-bottom: 8px; }
+    .doctor-profile__specialty { font-size: 1.1rem; color: var(--teal); font-weight: 500; margin-bottom: 24px; }
+    .schedule-full { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .schedule-full th { text-align: left; padding: 10px 16px; background: var(--gray-bg); font-weight: 600; font-size: .875rem; color: var(--text-sec); }
+    .schedule-full td { padding: 12px 16px; border-bottom: 1px solid var(--gray-line); font-size: .9rem; }
+    .schedule-full td:first-child { font-weight: 500; }
+    .schedule-full .no-reception { color: var(--text-sec); }
+    @media (max-width: 768px) {
+      .doctor-profile { grid-template-columns: 1fr; }
+      .doctor-profile__photo { width: 140px; height: 140px; font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/logo.svg" alt="Сункар логотип" width="36" height="36" onerror="this.style.display='none'" />
+        <span class="header__logo-text" data-i18n="nav.brand">Сункар</span>
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <a href="doctors.html" class="active" data-i18n="nav.doctors">Врачи</a>
+        <a href="services.html" data-i18n="nav.services">Услуги</a>
+        <a href="attach.html" data-i18n="nav.attach">Как прикрепиться</a>
+        <a href="index.html#contacts" data-i18n="nav.contacts">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <a href="tel:+77272000000" class="header__phone" data-i18n="nav.phone">+7 727 200-00-00</a>
+        <button class="btn btn--outline-white" onclick="openModal()" data-i18n="nav.cta">Записаться</button>
+        <div class="lang-switch">
+          <button class="lang-switch__btn active" onclick="setLang('ru')">RU</button>
+          <span>/</span>
+          <button class="lang-switch__btn" onclick="setLang('kz')">ҚАЗ</button>
+        </div>
+        <button class="burger" aria-label="Меню" onclick="toggleNav()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs" id="breadcrumbs">
+        <a href="/" data-i18n="nav.brand">Сункар</a>
+        <span class="breadcrumbs__sep">→</span>
+        <a href="doctors.html" data-i18n="nav.doctors">Врачи</a>
+        <span class="breadcrumbs__sep">→</span>
+        <span id="breadcrumbName">...</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div id="doctorContent">
+        <p style="color:var(--text-sec)" data-i18n="doctors.loading">Загрузка...</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <p class="footer__brand" data-i18n="nav.brand">Сункар</p>
+        <nav class="footer__nav">
+          <a href="doctors.html" data-i18n="nav.doctors">Врачи</a>
+          <a href="services.html" data-i18n="nav.services">Услуги</a>
+          <a href="attach.html" data-i18n="nav.attach">Как прикрепиться</a>
+          <a href="news.html" data-i18n="nav.news">Новости</a>
+        </nav>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title" data-i18n="contacts.title">Контакты</p>
+        <a href="tel:+77272000000" data-i18n="contacts.phone">+7 727 200-00-00</a>
+        <a href="https://wa.me/77272000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:info@sunkar-emkhana.kz">info@sunkar-emkhana.kz</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title" data-i18n="footer.requisites">Реквизиты</p>
+        <span data-i18n="footer.bin">БИН: 000000000000</span>
+        <span data-i18n="footer.org">КГП на ПХВ «Сункар»</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> <span data-i18n="nav.brand">Сункар</span>. <span data-i18n="footer.rights">Все права защищены.</span></p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__overlay" onclick="closeModal()"></div>
+    <div class="modal__content">
+      <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+      <h2 class="modal__title" id="modalTitle" data-i18n="modal.title">Онлайн-заявка</h2>
+      <form class="modal__form" id="modalForm" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label data-i18n="modal.name">Имя</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="modal.phone">Телефон *</label>
+          <input type="tel" name="phone" placeholder="+7XXXXXXXXXX" pattern="\+7\d{10}" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="modal.specialty">Специальность</label>
+          <select name="specialty" id="modalSpecialty">
+            <option value="" data-i18n="modal.selectSpecialty">Выберите специальность</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="modal.time">Удобное время</label>
+          <select name="time">
+            <option value="morning" data-i18n="modal.morning">Утро (08:00–12:00)</option>
+            <option value="day" data-i18n="modal.day">День (12:00–15:00)</option>
+            <option value="evening" data-i18n="modal.evening">Вечер (15:00–18:00)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full" data-i18n="modal.submit">Отправить заявку</button>
+        <p class="modal__success" id="modalSuccess" data-i18n="modal.success">Мы перезвоним вам в течение 2 часов</p>
+      </form>
+    </div>
+  </div>
+
+  <button class="access-toggle" onclick="toggleAccessPanel()" aria-label="Версия для слабовидящих">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+  </button>
+  <div class="access-panel" id="accessPanel">
+    <p class="access-panel__title" data-i18n="access.title">Версия для слабовидящих</p>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.fontSize">Размер шрифта</p>
+      <div class="access-panel__btns">
+        <button onclick="setFontSize('normal')" data-i18n="access.normal">Обычный</button>
+        <button onclick="setFontSize('large')" data-i18n="access.large">Крупный</button>
+        <button onclick="setFontSize('xlarge')" data-i18n="access.xlarge">Очень крупный</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.colorScheme">Цветовая схема</p>
+      <div class="access-panel__btns">
+        <button onclick="setColorScheme('normal')" data-i18n="access.schemeNormal">Обычная</button>
+        <button onclick="setColorScheme('bw')" data-i18n="access.schemeBW">Ч/Б</button>
+        <button onclick="setColorScheme('inv')" data-i18n="access.schemeInv">Инверсия</button>
+        <button onclick="setColorScheme('yb')" data-i18n="access.schemeYB">Жёлтый фон</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.letterSpacing">Интервал букв</p>
+      <div class="access-panel__btns">
+        <button onclick="setLetterSpacing('normal')" data-i18n="access.spacingNormal">Обычный</button>
+        <button onclick="setLetterSpacing('wide')" data-i18n="access.spacingWide">Увеличенный</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/supabase.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleNav() { document.getElementById('mainNav').classList.toggle('open'); }
+
+    const DAYS_RU = { mon:'Понедельник', tue:'Вторник', wed:'Среда', thu:'Четверг', fri:'Пятница', sat:'Суббота', sun:'Воскресенье' };
+    const DAYS_KZ = { mon:'Дүйсенбі', tue:'Сейсенбі', wed:'Сәрсенбі', thu:'Бейсенбі', fri:'Жұма', sat:'Сенбі', sun:'Жексенбі' };
+    const ALL_DAYS = ['mon','tue','wed','thu','fri','sat','sun'];
+
+    function getInitials(name) {
+      return name.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase();
+    }
+
+    async function loadDoctor() {
+      const id = new URLSearchParams(location.search).get('id');
+      if (!id) { location.href = 'doctors.html'; return; }
+
+      const { data, error } = await db.from('doctors').select('*').eq('id', id).single();
+      const container = document.getElementById('doctorContent');
+
+      if (error || !data) {
+        container.innerHTML = '<p style="color:var(--text-sec)">Врач не найден</p>';
+        return;
+      }
+
+      const lang = getCurrentLang();
+      const name      = lang === 'kz' ? (data.name_kz      || data.name_ru)      : data.name_ru;
+      const specialty = lang === 'kz' ? (data.specialty_kz || data.specialty_ru) : data.specialty_ru;
+      const dayMap    = lang === 'kz' ? DAYS_KZ : DAYS_RU;
+
+      document.title = `${name} — Сункар`;
+      document.getElementById('breadcrumbName').textContent = name;
+
+      // Pre-fill modal specialty
+      const modalSel = document.getElementById('modalSpecialty');
+      const opt = document.createElement('option');
+      opt.value = specialty; opt.textContent = specialty; opt.selected = true;
+      modalSel.appendChild(opt);
+
+      const scheduleRows = ALL_DAYS.map(day => {
+        const time = data.schedule?.[day];
+        return `<tr>
+          <td>${dayMap[day]}</td>
+          <td>${time ? time : '<span class="no-reception">—</span>'}</td>
+        </tr>`;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="doctor-profile">
+          <div>
+            <div class="doctor-profile__photo">
+              ${data.photo
+                ? `<img src="${data.photo}" alt="Фото врача ${name}"/>`
+                : `<span>${getInitials(name)}</span>`}
+            </div>
+          </div>
+          <div>
+            <h1 class="doctor-profile__name">${name}</h1>
+            <p class="doctor-profile__specialty">${specialty}</p>
+            <h2 style="font-size:1.1rem;font-weight:600;margin-bottom:16px">Расписание приёма</h2>
+            <table class="schedule-full">
+              <thead><tr><th>День</th><th>Время</th></tr></thead>
+              <tbody>${scheduleRows}</tbody>
+            </table>
+            <div style="margin-top:32px">
+              <button class="btn btn--primary" onclick="openModal('${specialty}')">Записаться к врачу</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function openModal(specialty) {
+      const modal = document.getElementById('modal');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (specialty) {
+        const sel = document.getElementById('modalSpecialty');
+        if (sel) sel.value = specialty;
+      }
+    }
+
+    loadDoctor();
+  </script>
+</body>
+</html>

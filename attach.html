@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Как прикрепиться — Сункар</title>
+  <meta name="description" content="Как прикрепиться к поликлинике Сункар в Алматы. Пошаговая инструкция и часто задаваемые вопросы." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <script type="application/ld+json">
+  { "@context":"https://schema.org","@type":"FAQPage","mainEntity":[] }
+  </script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/logo.svg" alt="Сункар логотип" width="36" height="36" onerror="this.style.display='none'" />
+        <span class="header__logo-text" data-i18n="nav.brand">Сункар</span>
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <a href="doctors.html" data-i18n="nav.doctors">Врачи</a>
+        <a href="services.html" data-i18n="nav.services">Услуги</a>
+        <a href="attach.html" class="active" data-i18n="nav.attach">Как прикрепиться</a>
+        <a href="index.html#contacts" data-i18n="nav.contacts">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <a href="tel:+77272000000" class="header__phone" data-i18n="nav.phone">+7 727 200-00-00</a>
+        <button class="btn btn--outline-white" onclick="openModal()" data-i18n="nav.cta">Записаться</button>
+        <div class="lang-switch">
+          <button class="lang-switch__btn active" onclick="setLang('ru')">RU</button>
+          <span>/</span>
+          <button class="lang-switch__btn" onclick="setLang('kz')">ҚАЗ</button>
+        </div>
+        <button class="burger" aria-label="Меню" onclick="toggleNav()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/" data-i18n="nav.brand">Сункар</a>
+        <span class="breadcrumbs__sep">→</span>
+        <span data-i18n="nav.attach">Как прикрепиться</span>
+      </div>
+      <h1 class="page-hero__title" data-i18n="attach.pageTitle">Как прикрепиться к поликлинике</h1>
+      <p class="page-hero__subtitle" data-i18n="attach.pageSubtitle">Пошаговая инструкция и часто задаваемые вопросы</p>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title" data-i18n="attach.title">Как прикрепиться</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step__num">1</div>
+          <div class="step__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <p class="step__text" data-i18n="attach.step1">Убедитесь, что поликлиника находится в вашем районе</p>
+        </div>
+        <div class="step">
+          <div class="step__num">2</div>
+          <div class="step__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <p class="step__text" data-i18n="attach.step2">Подготовьте удостоверение личности и полис ОСМС</p>
+        </div>
+        <div class="step">
+          <div class="step__num">3</div>
+          <div class="step__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <p class="step__text" data-i18n="attach.step3">Обратитесь на ресепшн или оставьте онлайн-заявку</p>
+        </div>
+        <div class="step">
+          <div class="step__num">4</div>
+          <div class="step__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <p class="step__text" data-i18n="attach.step4">Получите подтверждение прикрепления</p>
+        </div>
+      </div>
+      <div class="section__footer">
+        <button class="btn btn--primary" onclick="openModal()" data-i18n="attach.cta">Оставить заявку на прикрепление</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Documents info -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">Необходимые документы</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid var(--gray-line)">
+          <p style="font-weight:600;margin-bottom:12px">Для взрослых</p>
+          <ul style="display:flex;flex-direction:column;gap:8px;color:var(--text-sec);font-size:.9rem">
+            <li>• Удостоверение личности РК</li>
+            <li>• Полис ОСМС (при наличии)</li>
+          </ul>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid var(--gray-line)">
+          <p style="font-weight:600;margin-bottom:12px">Для детей до 16 лет</p>
+          <ul style="display:flex;flex-direction:column;gap:8px;color:var(--text-sec);font-size:.9rem">
+            <li>• Свидетельство о рождении</li>
+            <li>• Удостоверение личности одного из родителей</li>
+            <li>• Полис ОСМС (при наличии)</li>
+          </ul>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid var(--gray-line)">
+          <p style="font-weight:600;margin-bottom:12px">Для иностранных граждан</p>
+          <ul style="display:flex;flex-direction:column;gap:8px;color:var(--text-sec);font-size:.9rem">
+            <li>• Паспорт иностранного гражданина</li>
+            <li>• Вид на жительство или разрешение на временное проживание</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">Часто задаваемые вопросы</h2>
+      <div class="faq" id="faqList"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <p class="footer__brand" data-i18n="nav.brand">Сункар</p>
+        <nav class="footer__nav">
+          <a href="doctors.html" data-i18n="nav.doctors">Врачи</a>
+          <a href="services.html" data-i18n="nav.services">Услуги</a>
+          <a href="attach.html" data-i18n="nav.attach">Как прикрепиться</a>
+          <a href="news.html" data-i18n="nav.news">Новости</a>
+        </nav>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title" data-i18n="contacts.title">Контакты</p>
+        <a href="tel:+77272000000" data-i18n="contacts.phone">+7 727 200-00-00</a>
+        <a href="https://wa.me/77272000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:info@sunkar-emkhana.kz">info@sunkar-emkhana.kz</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title" data-i18n="footer.requisites">Реквизиты</p>
+        <span data-i18n="footer.bin">БИН: 000000000000</span>
+        <span data-i18n="footer.org">КГП на ПХВ «Сункар»</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> <span data-i18n="nav.brand">Сункар</span>. <span data-i18n="footer.rights">Все права защищены.</span></p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__overlay" onclick="closeModal()"></div>
+    <div class="modal__content">
+      <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+      <h2 class="modal__title" id="modalTitle" data-i18n="modal.title">Онлайн-заявка</h2>
+      <form class="modal__form" id="modalForm" onsubmit="submitForm(event)">
+        <div class="form-group"><label data-i18n="modal.name">Имя</label><input type="text" name="name" required /></div>
+        <div class="form-group"><label data-i18n="modal.phone">Телефон *</label><input type="tel" name="phone" placeholder="+7XXXXXXXXXX" pattern="\+7\d{10}" required /></div>
+        <div class="form-group">
+          <label data-i18n="modal.specialty">Специальность</label>
+          <select name="specialty"><option value="" data-i18n="modal.selectSpecialty">Выберите специальность</option></select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="modal.time">Удобное время</label>
+          <select name="time">
+            <option value="morning" data-i18n="modal.morning">Утро (08:00–12:00)</option>
+            <option value="day" data-i18n="modal.day">День (12:00–15:00)</option>
+            <option value="evening" data-i18n="modal.evening">Вечер (15:00–18:00)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full" data-i18n="modal.submit">Отправить заявку</button>
+        <p class="modal__success" id="modalSuccess" data-i18n="modal.success">Мы перезвоним вам в течение 2 часов</p>
+      </form>
+    </div>
+  </div>
+
+  <button class="access-toggle" onclick="toggleAccessPanel()" aria-label="Версия для слабовидящих">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+  </button>
+  <div class="access-panel" id="accessPanel">
+    <p class="access-panel__title" data-i18n="access.title">Версия для слабовидящих</p>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.fontSize">Размер шрифта</p>
+      <div class="access-panel__btns">
+        <button onclick="setFontSize('normal')" data-i18n="access.normal">Обычный</button>
+        <button onclick="setFontSize('large')" data-i18n="access.large">Крупный</button>
+        <button onclick="setFontSize('xlarge')" data-i18n="access.xlarge">Очень крупный</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.colorScheme">Цветовая схема</p>
+      <div class="access-panel__btns">
+        <button onclick="setColorScheme('normal')">Обычная</button>
+        <button onclick="setColorScheme('bw')">Ч/Б</button>
+        <button onclick="setColorScheme('inv')">Инверсия</button>
+        <button onclick="setColorScheme('yb')">Жёлтый фон</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.letterSpacing">Интервал букв</p>
+      <div class="access-panel__btns">
+        <button onclick="setLetterSpacing('normal')">Обычный</button>
+        <button onclick="setLetterSpacing('wide')">Увеличенный</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleNav() { document.getElementById('mainNav').classList.toggle('open'); }
+
+    async function loadFAQ() {
+      const lang = getCurrentLang?.() || 'ru';
+      const res = await fetch('/data/faq.json');
+      const items = await res.json();
+      document.getElementById('faqList').innerHTML = items.map(item => `
+        <div class="faq-item">
+          <button class="faq-item__question">${lang === 'kz' ? (item.q_kz || item.q_ru) : item.q_ru}</button>
+          <div class="faq-item__answer">${lang === 'kz' ? (item.a_kz || item.a_ru) : item.a_ru}</div>
+        </div>`).join('');
+    }
+
+    loadFAQ();
+  </script>
+</body>
+</html>
