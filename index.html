@@ -182,42 +182,114 @@
   <section class="section" id="contacts">
     <div class="container">
       <h2 class="section__title" data-i18n="contacts.title">Контакты</h2>
-      <div class="contacts-layout">
-        <div class="contacts-info">
-          <div class="contact-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span data-i18n="contacts.address">г. Алматы, ул. Примерная, 1</span>
+
+      <!-- Location tabs -->
+      <div class="location-tabs">
+        <button class="location-tab active" onclick="switchLocation(0, this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          7-й микрорайон, 3а
+        </button>
+        <button class="location-tab" onclick="switchLocation(1, this)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Аксай-1а, 1
+        </button>
+      </div>
+
+      <!-- Location 1: 7-й микрорайон -->
+      <div class="location-panel active" id="loc-0">
+        <div class="contacts-layout">
+          <div class="contacts-info">
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>г. Алматы, 7-й микрорайон, 3а <span class="badge badge--teal" style="margin-left:6px">3 этаж</span></span>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+77272000000" data-i18n="contacts.phone">+7 727 200-00-00</a>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <a href="https://wa.me/77272000000" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:info@sunkar-emkhana.kz">info@sunkar-emkhana.kz</a>
+            </div>
+            <table class="schedule-table">
+              <tbody>
+                <tr><td data-i18n="contacts.weekdays">Пн – Пт</td><td>08:00 – 18:00</td></tr>
+                <tr><td data-i18n="contacts.saturday">Суббота</td><td>09:00 – 14:00</td></tr>
+                <tr><td data-i18n="contacts.sunday">Воскресенье</td><td data-i18n="contacts.closed">Выходной</td></tr>
+              </tbody>
+            </table>
+            <a href="https://go.2gis.com/Pwo9Z" target="_blank" rel="noopener" class="btn btn--outline-teal" style="margin-top:16px;display:inline-flex;gap:8px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Открыть в 2ГИС
+            </a>
           </div>
-          <div class="contact-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <a href="tel:+77272000000" data-i18n="contacts.phone">+7 727 200-00-00</a>
+          <div class="contacts-map">
+            <iframe
+              src="https://widgets.2gis.com/widget?type=firmsonmap&options=%7B%22pos%22%3A%7B%22lat%22%3A43.2351%2C%22lon%22%3A76.8933%2C%22zoom%22%3A16%7D%7D"
+              width="100%" height="320" frameborder="0" allowfullscreen
+              title="Карта — 7-й микрорайон 3а">
+            </iframe>
           </div>
-          <div class="contact-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <a href="https://wa.me/77272000000" target="_blank" rel="noopener" data-i18n="contacts.whatsapp">WhatsApp</a>
-          </div>
-          <div class="contact-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:info@sunkar-emkhana.kz">info@sunkar-emkhana.kz</a>
-          </div>
-          <table class="schedule-table">
-            <tbody>
-              <tr><td data-i18n="contacts.weekdays">Пн – Пт</td><td>08:00 – 18:00</td></tr>
-              <tr><td data-i18n="contacts.saturday">Суббота</td><td>09:00 – 14:00</td></tr>
-              <tr><td data-i18n="contacts.sunday">Воскресенье</td><td data-i18n="contacts.closed">Выходной</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="contacts-map">
-          <iframe
-            src="https://widgets.2gis.com/widget?type=firmsonmap&options=%7B%22pos%22%3A%7B%22lat%22%3A43.238949%2C%22lon%22%3A76.945465%2C%22zoom%22%3A15%7D%7D"
-            width="100%" height="320" frameborder="0" allowfullscreen
-            title="Карта поликлиники Сункар">
-          </iframe>
         </div>
       </div>
+
+      <!-- Location 2: Аксай-1а -->
+      <div class="location-panel" id="loc-1">
+        <div class="contacts-layout">
+          <div class="contacts-info">
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>г. Алматы, мкр. Аксай-1а, 1</span>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+77272000000" data-i18n="contacts.phone">+7 727 200-00-00</a>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--sunkar-red)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <a href="https://wa.me/77272000000" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
+            <div class="contact-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:info@sunkar-emkhana.kz">info@sunkar-emkhana.kz</a>
+            </div>
+            <table class="schedule-table">
+              <tbody>
+                <tr><td data-i18n="contacts.weekdays">Пн – Пт</td><td>08:00 – 18:00</td></tr>
+                <tr><td data-i18n="contacts.saturday">Суббота</td><td>09:00 – 14:00</td></tr>
+                <tr><td data-i18n="contacts.sunday">Воскресенье</td><td data-i18n="contacts.closed">Выходной</td></tr>
+              </tbody>
+            </table>
+            <a href="https://go.2gis.com/0qZw3" target="_blank" rel="noopener" class="btn btn--outline-teal" style="margin-top:16px;display:inline-flex;gap:8px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Открыть в 2ГИС
+            </a>
+          </div>
+          <div class="contacts-map">
+            <iframe
+              src="https://widgets.2gis.com/widget?type=firmsonmap&options=%7B%22pos%22%3A%7B%22lat%22%3A43.2477%2C%22lon%22%3A76.8253%2C%22zoom%22%3A16%7D%7D"
+              width="100%" height="320" frameborder="0" allowfullscreen
+              title="Карта — Аксай-1а 1">
+            </iframe>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
+
+  <script>
+    function switchLocation(idx, btn) {
+      document.querySelectorAll('.location-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.location-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('loc-' + idx).classList.add('active');
+    }
+  </script>
 
   <!-- FOOTER -->
   <footer class="footer">

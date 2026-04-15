@@ -476,6 +476,35 @@ body {
   overflow: hidden;
 }
 
+/* ── Location tabs ── */
+.location-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.location-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 2px solid var(--gray-line);
+  background: var(--white);
+  color: var(--text-sec);
+  font-size: .9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.location-tab:hover { border-color: var(--teal); color: var(--teal); }
+.location-tab.active { border-color: var(--teal); background: var(--teal); color: var(--white); }
+
+.location-panel { display: none; }
+.location-panel.active { display: block; }
+
 /* ── Contacts ── */
 .contacts-layout {
   display: grid;
