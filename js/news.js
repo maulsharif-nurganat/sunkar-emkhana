@@ -1,12 +1,10 @@
-import { db, collection, getDocs, query, orderBy, limit, where } from './firebase.js';
-
-function formatDate(ts) {
-  if (!ts) return '';
-  const d = ts.toDate ? ts.toDate() : new Date(ts);
-  return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  return new Date(dateStr).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
-function renderNewsCard(item, lang) {
+function renderNewsCard(item) {
+  const lang  = window.getCurrentLang?.() || 'ru';
   const title = lang === 'kz' ? (item.title_kz || item.title_ru) : item.title_ru;
   const body  = lang === 'kz' ? (item.body_kz  || item.body_ru)  : item.body_ru;
 
@@ -25,24 +23,18 @@ async function loadNewsPreview() {
   const grid = document.getElementById('newsGrid');
   if (!grid) return;
 
-  try {
-    const lang = window.getCurrentLang?.() || 'ru';
-    const q = query(collection(db, 'news'), orderBy('date', 'desc'), limit(2));
-    const snap = await getDocs(q);
+  const { data, error } = await db
+    .from('news')
+    .select('*')
+    .order('date', { ascending: false })
+    .limit(2);
 
-    grid.innerHTML = '';
-    if (snap.empty) {
-      grid.innerHTML = `<p style="color:var(--text-sec)">${window.t('news.noNews')}</p>`;
-      return;
-    }
-    snap.forEach(docSnap => {
-      grid.appendChild(renderNewsCard({ id: docSnap.id, ...docSnap.data() }, lang));
-    });
-  } catch (e) {
-    console.error('news.js:', e);
-    grid.innerHTML = '<p style="color:var(--text-sec)">Не удалось загрузить данные</p>';
+  grid.innerHTML = '';
+  if (error || !data?.length) {
+    grid.innerHTML = `<p style="color:var(--text-sec)">${window.t('news.noNews')}</p>`;
+    return;
   }
+  data.forEach(item => grid.appendChild(renderNewsCard(item)));
 }
 
 loadNewsPreview();
-export { renderNewsCard, formatDate };
