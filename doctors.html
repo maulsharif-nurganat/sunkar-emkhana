@@ -204,7 +204,7 @@
       const next = getNextAppointment(doc.schedule);
 
       return `
-        <a href="/doctor?id=${doc.id}" class="doctor-card doctor-card--full">
+        <a href="/doctors/${doc.slug || doc.id}" class="doctor-card doctor-card--full">
           <div class="doctor-card__photo">
             ${doc.photo
               ? `<img src="${doc.photo}" alt="Фото врача ${name}" style="width:100%;height:100%;object-fit:cover"/>`

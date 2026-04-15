@@ -183,10 +183,15 @@
     }
 
     async function loadDoctor() {
-      const id = new URLSearchParams(location.search).get('id');
-      if (!id) { location.href = 'doctors.html'; return; }
+      // Support both /doctors/jane-doe (slug) and ?id=uuid (fallback)
+      const slug = location.pathname.split('/').pop();
+      const id   = new URLSearchParams(location.search).get('id');
 
-      const { data, error } = await db.from('doctors').select('*').eq('id', id).single();
+      if (!slug && !id) { location.href = '/doctors'; return; }
+
+      const { data, error } = slug && slug !== 'doctor'
+        ? await db.from('doctors').select('*').eq('slug', slug).single()
+        : await db.from('doctors').select('*').eq('id', id).single();
       const container = document.getElementById('doctorContent');
 
       if (error || !data) {

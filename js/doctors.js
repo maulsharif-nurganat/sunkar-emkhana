@@ -26,7 +26,7 @@ function renderDoctorCard(doctor) {
   const next = getNextAppointment(doctor.schedule);
 
   const card = document.createElement('a');
-  card.href = `doctor.html?id=${doctor.id}`;
+  card.href = `/doctors/${doctor.slug || doctor.id}`;
   card.className = 'doctor-card';
   card.innerHTML = `
     <div class="doctor-card__photo">
