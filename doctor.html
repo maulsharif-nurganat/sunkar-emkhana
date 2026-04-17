@@ -194,8 +194,12 @@
         : await db.from('doctors').select('*').eq('id', id).single();
       const container = document.getElementById('doctorContent');
 
-      if (error || !data) {
-        container.innerHTML = '<p style="color:var(--text-sec)">Врач не найден</p>';
+      if (error) {
+        container.innerHTML = `<p style="color:var(--text-sec)">Ошибка: ${error.message}</p>`;
+        return;
+      }
+      if (!data) {
+        container.innerHTML = '<p style="color:var(--text-sec)">Врач не найден (slug: ' + (slug || id) + ')</p>';
         return;
       }
 
