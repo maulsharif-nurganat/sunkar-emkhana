@@ -85,11 +85,78 @@
     </div>
   </footer>
 
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__overlay" onclick="closeModal()"></div>
+    <div class="modal__content">
+      <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+      <h2 class="modal__title" id="modalTitle" data-i18n="modal.title">Онлайн-заявка</h2>
+      <form class="modal__form" id="modalForm" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label data-i18n="modal.name">Имя</label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="modal.phone">Телефон *</label>
+          <input type="tel" name="phone" placeholder="+7XXXXXXXXXX" pattern="\+7\d{10}" required />
+        </div>
+        <div class="form-group">
+          <label data-i18n="modal.specialty">Специальность</label>
+          <select name="specialty" id="modalSpecialty">
+            <option value="" data-i18n="modal.selectSpecialty">Выберите специальность</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="modal.time">Удобное время</label>
+          <select name="time">
+            <option value="morning" data-i18n="modal.morning">Утро (08:00–12:00)</option>
+            <option value="day" data-i18n="modal.day">День (12:00–15:00)</option>
+            <option value="evening" data-i18n="modal.evening">Вечер (15:00–18:00)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full" data-i18n="modal.submit">Отправить заявку</button>
+        <p class="modal__success" id="modalSuccess" data-i18n="modal.success">Мы перезвоним вам в течение 2 часов</p>
+      </form>
+    </div>
+  </div>
+
+  <button class="access-toggle" onclick="toggleAccessPanel()" aria-label="Версия для слабовидящих">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+  </button>
+  <div class="access-panel" id="accessPanel">
+    <p class="access-panel__title" data-i18n="access.title">Версия для слабовидящих</p>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.fontSize">Размер шрифта</p>
+      <div class="access-panel__btns">
+        <button onclick="setFontSize('normal')" data-i18n="access.normal">Обычный</button>
+        <button onclick="setFontSize('large')" data-i18n="access.large">Крупный</button>
+        <button onclick="setFontSize('xlarge')" data-i18n="access.xlarge">Очень крупный</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.colorScheme">Цветовая схема</p>
+      <div class="access-panel__btns">
+        <button onclick="setColorScheme('normal')" data-i18n="access.schemeNormal">Обычная</button>
+        <button onclick="setColorScheme('bw')" data-i18n="access.schemeBW">Ч/Б</button>
+        <button onclick="setColorScheme('inv')" data-i18n="access.schemeInv">Инверсия</button>
+        <button onclick="setColorScheme('yb')" data-i18n="access.schemeYB">Жёлтый фон</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.letterSpacing">Интервал букв</p>
+      <div class="access-panel__btns">
+        <button onclick="setLetterSpacing('normal')" data-i18n="access.spacingNormal">Обычный</button>
+        <button onclick="setLetterSpacing('wide')" data-i18n="access.spacingWide">Увеличенный</button>
+      </div>
+    </div>
+  </div>
+
   <script src="js/i18n.js"></script>
   <script src="js/services.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     function toggleNav() { document.getElementById('mainNav').classList.toggle('open'); }
+    // loadServices вызывается автоматически из services.js с лимитом 3 (для главной)
+    // На странице услуг перезапускаем без лимита — все категории
     loadServices('servicesList');
   </script>
 </body>
