@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>О нас — Сункар</title>
+  <meta name="description" content="О поликлинике Сункар в Алматы. Реквизиты, руководство, миссия." />
+  <link rel="canonical" href="https://sunkar-emkhana.kz/about" />
+  <meta property="og:title" content="О нас — Сункар" />
+  <meta property="og:url" content="https://sunkar-emkhana.kz/about" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/logo.svg" alt="Сункар логотип" width="36" height="36" onerror="this.style.display='none'" />
+        <span class="header__logo-text" data-i18n="nav.brand">Сункар</span>
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <a href="/about" class="active" data-i18n="nav.about">О нас</a>
+        <a href="/doctors" data-i18n="nav.doctors">Врачи</a>
+        <a href="/services" data-i18n="nav.services">Услуги</a>
+        <a href="/attach" data-i18n="nav.attach">Как прикрепиться</a>
+        <a href="/#contacts" data-i18n="nav.contacts">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <a href="tel:+77272000000" class="header__phone" data-i18n="nav.phone">+7 727 200-00-00</a>
+        <button class="btn btn--outline-white" onclick="openModal()" data-i18n="nav.cta">Записаться</button>
+        <div class="lang-switch">
+          <button class="lang-switch__btn active" onclick="setLang('ru')">RU</button>
+          <span>/</span>
+          <button class="lang-switch__btn" onclick="setLang('kz')">ҚАЗ</button>
+        </div>
+        <button class="burger" aria-label="Меню" onclick="toggleNav()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/">Сункар</a>
+        <span class="breadcrumbs__sep">→</span>
+        <span>О нас</span>
+      </div>
+      <h1 class="page-hero__title">О поликлинике</h1>
+      <p class="page-hero__subtitle">КГП на ПХВ «Сункар» — государственная поликлиника г. Алматы</p>
+    </div>
+  </section>
+
+  <!-- Реквизиты -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+        <div>
+          <h2 class="section__title">Общие сведения</h2>
+          <table style="width:100%;border-collapse:collapse">
+            <tr style="border-bottom:1px solid var(--gray-line)">
+              <td style="padding:12px 0;font-size:.9rem;color:var(--text-sec);width:45%">Полное наименование</td>
+              <td style="padding:12px 0;font-size:.9rem;font-weight:500">КГП на ПХВ «Сункар»</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-line)">
+              <td style="padding:12px 0;font-size:.9rem;color:var(--text-sec)">БИН</td>
+              <td style="padding:12px 0;font-size:.9rem;font-weight:500">000000000000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-line)">
+              <td style="padding:12px 0;font-size:.9rem;color:var(--text-sec)">Руководитель</td>
+              <td style="padding:12px 0;font-size:.9rem;font-weight:500">Фамилия Имя Отчество</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-line)">
+              <td style="padding:12px 0;font-size:.9rem;color:var(--text-sec)">Тип организации</td>
+              <td style="padding:12px 0;font-size:.9rem;font-weight:500">Государственное предприятие на праве хозяйственного ведения</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-line)">
+              <td style="padding:12px 0;font-size:.9rem;color:var(--text-sec)">Телефон</td>
+              <td style="padding:12px 0;font-size:.9rem;font-weight:500"><a href="tel:+77272000000">+7 727 200-00-00</a></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-line)">
+              <td style="padding:12px 0;font-size:.9rem;color:var(--text-sec)">Email</td>
+              <td style="padding:12px 0;font-size:.9rem;font-weight:500"><a href="mailto:info@sunkar-emkhana.kz">info@sunkar-emkhana.kz</a></td>
+            </tr>
+            <tr>
+              <td style="padding:12px 0;font-size:.9rem;color:var(--text-sec)">Адреса</td>
+              <td style="padding:12px 0;font-size:.9rem;font-weight:500">
+                г. Алматы, 7-й мкр., 3а (3 этаж)<br/>
+                г. Алматы, мкр. Аксай-1а, 1
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div>
+          <h2 class="section__title">О руководителе</h2>
+          <div style="display:flex;gap:20px;align-items:flex-start">
+            <div style="width:100px;height:100px;border-radius:50%;background:var(--teal-light);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--teal);font-weight:600">ФИ</div>
+            <div>
+              <p style="font-weight:600;font-size:1rem;margin-bottom:4px">Фамилия Имя Отчество</p>
+              <p style="font-size:.875rem;color:var(--teal);margin-bottom:12px">Главный врач</p>
+              <p style="font-size:.875rem;color:var(--text-sec);line-height:1.6">
+                Стаж работы в здравоохранении более 20 лет. Специализация — терапия и организация здравоохранения. Руководит поликлиникой с [год].
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Миссия -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">Наша миссия</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px;text-align:center">
+          <div style="color:var(--teal);margin-bottom:16px">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <p style="font-weight:600;margin-bottom:8px">Качественная помощь</p>
+          <p style="font-size:.875rem;color:var(--text-sec)">Оказание доступной и качественной первичной медико-санитарной помощи населению</p>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px;text-align:center">
+          <div style="color:var(--teal);margin-bottom:16px">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <p style="font-weight:600;margin-bottom:8px">Забота о пациентах</p>
+          <p style="font-size:.875rem;color:var(--text-sec)">Индивидуальный подход к каждому пациенту и соблюдение прав граждан на охрану здоровья</p>
+        </div>
+        <div style="background:var(--white);border-radius:var(--radius);padding:28px;text-align:center">
+          <div style="color:var(--teal);margin-bottom:16px">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <p style="font-weight:600;margin-bottom:8px">Профилактика</p>
+          <p style="font-size:.875rem;color:var(--text-sec)">Проведение профилактических мероприятий и пропаганда здорового образа жизни</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Полезные ссылки -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">Полезные ресурсы</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+        <a href="https://egov.kz" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius);transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 2px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <div style="width:40px;height:40px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.8rem">eGov</div>
+          <div><p style="font-weight:600;font-size:.9rem">eGov.kz</p><p style="font-size:.8rem;color:var(--text-sec)">Электронное правительство</p></div>
+        </a>
+        <a href="https://damumed.kz" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius);transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 2px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <div style="width:40px;height:40px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.7rem">Damu</div>
+          <div><p style="font-weight:600;font-size:.9rem">Damumed.kz</p><p style="font-size:.8rem;color:var(--text-sec)">Запись к врачу онлайн</p></div>
+        </a>
+        <a href="https://mzsr.gov.kz" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius);transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 2px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <div style="width:40px;height:40px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.7rem">МЗ</div>
+          <div><p style="font-weight:600;font-size:.9rem">mzsr.gov.kz</p><p style="font-size:.8rem;color:var(--text-sec)">Министерство здравоохранения</p></div>
+        </a>
+        <a href="https://almaty.gov.kz" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius);transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 2px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <div style="width:40px;height:40px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.7rem">АКМ</div>
+          <div><p style="font-weight:600;font-size:.9rem">almaty.gov.kz</p><p style="font-size:.8rem;color:var(--text-sec)">Акимат г. Алматы</p></div>
+        </a>
+        <a href="https://osms.kz" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius);transition:box-shadow .2s" onmouseover="this.style.boxShadow='0 2px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <div style="width:40px;height:40px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.7rem">ОСМС</div>
+          <div><p style="font-weight:600;font-size:.9rem">osms.kz</p><p style="font-size:.8rem;color:var(--text-sec)">Фонд медстрахования</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <p class="footer__brand" data-i18n="nav.brand">Сункар</p>
+        <nav class="footer__nav">
+          <a href="/about">О нас</a>
+          <a href="/doctors" data-i18n="nav.doctors">Врачи</a>
+          <a href="/services" data-i18n="nav.services">Услуги</a>
+          <a href="/attach" data-i18n="nav.attach">Как прикрепиться</a>
+          <a href="/news" data-i18n="nav.news">Новости</a>
+          <a href="/rights">Права пациентов</a>
+        </nav>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title" data-i18n="contacts.title">Контакты</p>
+        <a href="tel:+77272000000" data-i18n="contacts.phone">+7 727 200-00-00</a>
+        <a href="https://wa.me/77272000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:info@sunkar-emkhana.kz">info@sunkar-emkhana.kz</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Полезные ссылки</p>
+        <a href="https://egov.kz" target="_blank" rel="noopener">eGov.kz</a>
+        <a href="https://damumed.kz" target="_blank" rel="noopener">Damumed.kz</a>
+        <a href="https://mzsr.gov.kz" target="_blank" rel="noopener">Министерство здравоохранения</a>
+        <a href="https://osms.kz" target="_blank" rel="noopener">Фонд ОСМС</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title" data-i18n="footer.requisites">Реквизиты</p>
+        <span data-i18n="footer.bin">БИН: 000000000000</span>
+        <span data-i18n="footer.org">КГП на ПХВ «Сункар»</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> <span data-i18n="nav.brand">Сункар</span>. <span data-i18n="footer.rights">Все права защищены.</span></p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__overlay" onclick="closeModal()"></div>
+    <div class="modal__content">
+      <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+      <h2 class="modal__title" id="modalTitle" data-i18n="modal.title">Онлайн-заявка</h2>
+      <form class="modal__form" id="modalForm" onsubmit="submitForm(event)">
+        <div class="form-group"><label data-i18n="modal.name">Имя</label><input type="text" name="name" required /></div>
+        <div class="form-group"><label data-i18n="modal.phone">Телефон *</label><input type="tel" name="phone" placeholder="+7XXXXXXXXXX" pattern="\+7\d{10}" required /></div>
+        <div class="form-group"><label data-i18n="modal.time">Удобное время</label>
+          <select name="time">
+            <option value="morning" data-i18n="modal.morning">Утро (08:00–12:00)</option>
+            <option value="day" data-i18n="modal.day">День (12:00–15:00)</option>
+            <option value="evening" data-i18n="modal.evening">Вечер (15:00–18:00)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full" data-i18n="modal.submit">Отправить заявку</button>
+        <p class="modal__success" id="modalSuccess" data-i18n="modal.success">Мы перезвоним вам в течение 2 часов</p>
+      </form>
+    </div>
+  </div>
+
+  <button class="access-toggle" onclick="toggleAccessPanel()" aria-label="Версия для слабовидящих">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+  </button>
+  <div class="access-panel" id="accessPanel">
+    <p class="access-panel__title" data-i18n="access.title">Версия для слабовидящих</p>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.fontSize">Размер шрифта</p>
+      <div class="access-panel__btns">
+        <button onclick="setFontSize('normal')" data-i18n="access.normal">Обычный</button>
+        <button onclick="setFontSize('large')" data-i18n="access.large">Крупный</button>
+        <button onclick="setFontSize('xlarge')" data-i18n="access.xlarge">Очень крупный</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.colorScheme">Цветовая схема</p>
+      <div class="access-panel__btns">
+        <button onclick="setColorScheme('normal')">Обычная</button>
+        <button onclick="setColorScheme('bw')">Ч/Б</button>
+        <button onclick="setColorScheme('inv')">Инверсия</button>
+        <button onclick="setColorScheme('yb')">Жёлтый фон</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.letterSpacing">Интервал букв</p>
+      <div class="access-panel__btns">
+        <button onclick="setLetterSpacing('normal')">Обычный</button>
+        <button onclick="setLetterSpacing('wide')">Увеличенный</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleNav() { document.getElementById('mainNav').classList.toggle('open'); }
+  </script>
+</body>
+</html>

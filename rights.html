@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Права пациентов — Сункар</title>
+  <meta name="description" content="Права и обязанности пациентов поликлиники Сункар. Антикоррупционная политика." />
+  <link rel="canonical" href="https://sunkar-emkhana.kz/rights" />
+  <meta property="og:title" content="Права пациентов — Сункар" />
+  <meta property="og:url" content="https://sunkar-emkhana.kz/rights" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/logo.svg" alt="Сункар логотип" width="36" height="36" onerror="this.style.display='none'" />
+        <span class="header__logo-text" data-i18n="nav.brand">Сункар</span>
+      </a>
+      <nav class="header__nav" id="mainNav">
+        <a href="/about" data-i18n="nav.about">О нас</a>
+        <a href="/doctors" data-i18n="nav.doctors">Врачи</a>
+        <a href="/services" data-i18n="nav.services">Услуги</a>
+        <a href="/attach" data-i18n="nav.attach">Как прикрепиться</a>
+        <a href="/#contacts" data-i18n="nav.contacts">Контакты</a>
+      </nav>
+      <div class="header__actions">
+        <a href="tel:+77272000000" class="header__phone" data-i18n="nav.phone">+7 727 200-00-00</a>
+        <button class="btn btn--outline-white" onclick="openModal()" data-i18n="nav.cta">Записаться</button>
+        <div class="lang-switch">
+          <button class="lang-switch__btn active" onclick="setLang('ru')">RU</button>
+          <span>/</span>
+          <button class="lang-switch__btn" onclick="setLang('kz')">ҚАЗ</button>
+        </div>
+        <button class="burger" aria-label="Меню" onclick="toggleNav()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/">Сункар</a>
+        <span class="breadcrumbs__sep">→</span>
+        <span>Права пациентов</span>
+      </div>
+      <h1 class="page-hero__title">Права и обязанности пациентов</h1>
+      <p class="page-hero__subtitle">В соответствии с Кодексом РК «О здоровье народа и системе здравоохранения»</p>
+    </div>
+  </section>
+
+  <!-- Права пациентов -->
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start">
+
+        <div>
+          <h2 class="section__title" style="margin-bottom:24px">Права пациентов</h2>
+          <div style="display:flex;flex-direction:column;gap:16px">
+
+            <div style="display:flex;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius)">
+              <div style="width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.9rem">1</div>
+              <div>
+                <p style="font-weight:600;font-size:.9rem;margin-bottom:4px">Бесплатная медицинская помощь</p>
+                <p style="font-size:.85rem;color:var(--text-sec)">Получение гарантированного объёма бесплатной медицинской помощи (ГОБМП) в соответствии с законодательством РК</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius)">
+              <div style="width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.9rem">2</div>
+              <div>
+                <p style="font-weight:600;font-size:.9rem;margin-bottom:4px">Информация о состоянии здоровья</p>
+                <p style="font-size:.85rem;color:var(--text-sec)">Получение информации о диагнозе, методах лечения, возможных рисках и прогнозе заболевания в доступной форме</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius)">
+              <div style="width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.9rem">3</div>
+              <div>
+                <p style="font-weight:600;font-size:.9rem;margin-bottom:4px">Уважение и достоинство</p>
+                <p style="font-size:.85rem;color:var(--text-sec)">Уважительное отношение со стороны медицинского персонала, соблюдение морально-этических норм</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius)">
+              <div style="width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.9rem">4</div>
+              <div>
+                <p style="font-weight:600;font-size:.9rem;margin-bottom:4px">Конфиденциальность</p>
+                <p style="font-size:.85rem;color:var(--text-sec)">Сохранение врачебной тайны и неразглашение сведений о состоянии здоровья без вашего согласия</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius)">
+              <div style="width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.9rem">5</div>
+              <div>
+                <p style="font-weight:600;font-size:.9rem;margin-bottom:4px">Выбор врача</p>
+                <p style="font-size:.85rem;color:var(--text-sec)">Право выбора врача общей практики (ВОП) в пределах прикреплённой поликлиники</p>
+              </div>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius)">
+              <div style="width:36px;height:36px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-weight:700;font-size:.9rem">6</div>
+              <div>
+                <p style="font-weight:600;font-size:.9rem;margin-bottom:4px">Обжалование действий</p>
+                <p style="font-size:.85rem;color:var(--text-sec)">Право на обжалование действий или бездействия медицинских работников в установленном порядке</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div>
+          <h2 class="section__title" style="margin-bottom:24px">Обязанности пациентов</h2>
+          <div style="display:flex;flex-direction:column;gap:16px">
+
+            <div style="display:flex;gap:16px;padding:20px;background:var(--gray-bg);border-radius:var(--radius)">
+              <svg style="flex-shrink:0;color:var(--teal);margin-top:2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <p style="font-size:.875rem">Заботиться о своём здоровье, вести здоровый образ жизни</p>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;background:var(--gray-bg);border-radius:var(--radius)">
+              <svg style="flex-shrink:0;color:var(--teal);margin-top:2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <p style="font-size:.875rem">Уважительно относиться к медицинским работникам и другим пациентам</p>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;background:var(--gray-bg);border-radius:var(--radius)">
+              <svg style="flex-shrink:0;color:var(--teal);margin-top:2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <p style="font-size:.875rem">Предоставлять достоверную информацию о состоянии здоровья при обращении за медицинской помощью</p>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;background:var(--gray-bg);border-radius:var(--radius)">
+              <svg style="flex-shrink:0;color:var(--teal);margin-top:2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <p style="font-size:.875rem">Выполнять назначения и рекомендации врача</p>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;background:var(--gray-bg);border-radius:var(--radius)">
+              <svg style="flex-shrink:0;color:var(--teal);margin-top:2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <p style="font-size:.875rem">Соблюдать правила внутреннего распорядка медицинской организации</p>
+            </div>
+
+            <div style="display:flex;gap:16px;padding:20px;background:var(--gray-bg);border-radius:var(--radius)">
+              <svg style="flex-shrink:0;color:var(--teal);margin-top:2px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <p style="font-size:.875rem">Своевременно сообщать об изменениях в состоянии здоровья лечащему врачу</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Антикоррупция -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">Антикоррупционная политика</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px">
+
+        <div>
+          <div style="background:var(--white);border-radius:var(--radius);padding:28px">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+              <div style="width:44px;height:44px;background:#fff3cd;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e6ac00" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <p style="font-weight:600">Мы против коррупции</p>
+            </div>
+            <p style="font-size:.875rem;color:var(--text-sec);line-height:1.7;margin-bottom:16px">
+              КГП на ПХВ «Сункар» проводит политику нулевой терпимости к коррупции. Все услуги в рамках ГОБМП предоставляются <strong>бесплатно</strong>. Требование оплаты за бесплатные услуги является нарушением законодательства.
+            </p>
+            <p style="font-size:.875rem;color:var(--text-sec);line-height:1.7">
+              Если вам предложили заплатить за бесплатную услугу или вымогают взятку — незамедлительно сообщите об этом.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div style="background:var(--white);border-radius:var(--radius);padding:28px">
+            <p style="font-weight:600;margin-bottom:20px">Куда сообщить о нарушении</p>
+            <div style="display:flex;flex-direction:column;gap:12px">
+
+              <a href="tel:+77272000000" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--gray-line);border-radius:8px;font-size:.875rem;font-weight:500;color:var(--text)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Руководителю поликлиники: +7 727 200-00-00
+              </a>
+
+              <a href="https://anticor.gov.kz" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--gray-line);border-radius:8px;font-size:.875rem;font-weight:500;color:var(--text)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                anticor.gov.kz — Агентство по противодействию коррупции
+              </a>
+
+              <a href="tel:1400" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--gray-line);border-radius:8px;font-size:.875rem;font-weight:500;color:var(--text)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Горячая линия МЗ РК: 1400 (бесплатно)
+              </a>
+
+              <a href="mailto:info@sunkar-emkhana.kz" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--gray-line);border-radius:8px;font-size:.875rem;font-weight:500;color:var(--text)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                info@sunkar-emkhana.kz
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Документы -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">Нормативные документы</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+
+        <a href="https://adilet.zan.kz/rus/docs/K2000000360" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius);transition:box-shadow .2s"
+           onmouseover="this.style.boxShadow='0 2px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <div style="width:44px;height:44px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div>
+            <p style="font-weight:600;font-size:.875rem;margin-bottom:2px">Кодекс «О здоровье народа»</p>
+            <p style="font-size:.8rem;color:var(--text-sec)">Закон РК № 360-VI от 07.07.2020</p>
+          </div>
+        </a>
+
+        <a href="https://adilet.zan.kz/rus/docs/Z150000410" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius);transition:box-shadow .2s"
+           onmouseover="this.style.boxShadow='0 2px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <div style="width:44px;height:44px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div>
+            <p style="font-weight:600;font-size:.875rem;margin-bottom:2px">Закон о противодействии коррупции</p>
+            <p style="font-size:.8rem;color:var(--text-sec)">Закон РК № 410-V от 18.11.2015</p>
+          </div>
+        </a>
+
+        <a href="https://mzsr.gov.kz/ru/gombp" target="_blank" rel="noopener"
+           style="display:flex;align-items:center;gap:16px;padding:20px;border:1px solid var(--gray-line);border-radius:var(--radius);transition:box-shadow .2s"
+           onmouseover="this.style.boxShadow='0 2px 12px rgba(0,0,0,.08)'" onmouseout="this.style.boxShadow='none'">
+          <div style="width:44px;height:44px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div>
+            <p style="font-weight:600;font-size:.875rem;margin-bottom:2px">ГОБМП — перечень услуг</p>
+            <p style="font-size:.8rem;color:var(--text-sec)">Министерство здравоохранения РК</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <p class="footer__brand" data-i18n="nav.brand">Сункар</p>
+        <nav class="footer__nav">
+          <a href="/about">О нас</a>
+          <a href="/doctors" data-i18n="nav.doctors">Врачи</a>
+          <a href="/services" data-i18n="nav.services">Услуги</a>
+          <a href="/attach" data-i18n="nav.attach">Как прикрепиться</a>
+          <a href="/news" data-i18n="nav.news">Новости</a>
+          <a href="/rights">Права пациентов</a>
+        </nav>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title" data-i18n="contacts.title">Контакты</p>
+        <a href="tel:+77272000000" data-i18n="contacts.phone">+7 727 200-00-00</a>
+        <a href="https://wa.me/77272000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:info@sunkar-emkhana.kz">info@sunkar-emkhana.kz</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Полезные ссылки</p>
+        <a href="https://egov.kz" target="_blank" rel="noopener">eGov.kz</a>
+        <a href="https://damumed.kz" target="_blank" rel="noopener">Damumed.kz</a>
+        <a href="https://mzsr.gov.kz" target="_blank" rel="noopener">Министерство здравоохранения</a>
+        <a href="https://osms.kz" target="_blank" rel="noopener">Фонд ОСМС</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title" data-i18n="footer.requisites">Реквизиты</p>
+        <span data-i18n="footer.bin">БИН: 000000000000</span>
+        <span data-i18n="footer.org">КГП на ПХВ «Сункар»</span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> <span data-i18n="nav.brand">Сункар</span>. <span data-i18n="footer.rights">Все права защищены.</span></p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__overlay" onclick="closeModal()"></div>
+    <div class="modal__content">
+      <button class="modal__close" onclick="closeModal()" aria-label="Закрыть">&times;</button>
+      <h2 class="modal__title" id="modalTitle" data-i18n="modal.title">Онлайн-заявка</h2>
+      <form class="modal__form" id="modalForm" onsubmit="submitForm(event)">
+        <div class="form-group"><label data-i18n="modal.name">Имя</label><input type="text" name="name" required /></div>
+        <div class="form-group"><label data-i18n="modal.phone">Телефон *</label><input type="tel" name="phone" placeholder="+7XXXXXXXXXX" pattern="\+7\d{10}" required /></div>
+        <div class="form-group"><label data-i18n="modal.time">Удобное время</label>
+          <select name="time">
+            <option value="morning" data-i18n="modal.morning">Утро (08:00–12:00)</option>
+            <option value="day" data-i18n="modal.day">День (12:00–15:00)</option>
+            <option value="evening" data-i18n="modal.evening">Вечер (15:00–18:00)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full" data-i18n="modal.submit">Отправить заявку</button>
+        <p class="modal__success" id="modalSuccess" data-i18n="modal.success">Мы перезвоним вам в течение 2 часов</p>
+      </form>
+    </div>
+  </div>
+
+  <button class="access-toggle" onclick="toggleAccessPanel()" aria-label="Версия для слабовидящих">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+  </button>
+  <div class="access-panel" id="accessPanel">
+    <p class="access-panel__title" data-i18n="access.title">Версия для слабовидящих</p>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.fontSize">Размер шрифта</p>
+      <div class="access-panel__btns">
+        <button onclick="setFontSize('normal')" data-i18n="access.normal">Обычный</button>
+        <button onclick="setFontSize('large')" data-i18n="access.large">Крупный</button>
+        <button onclick="setFontSize('xlarge')" data-i18n="access.xlarge">Очень крупный</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.colorScheme">Цветовая схема</p>
+      <div class="access-panel__btns">
+        <button onclick="setColorScheme('normal')">Обычная</button>
+        <button onclick="setColorScheme('bw')">Ч/Б</button>
+        <button onclick="setColorScheme('inv')">Инверсия</button>
+        <button onclick="setColorScheme('yb')">Жёлтый фон</button>
+      </div>
+    </div>
+    <div class="access-panel__group">
+      <p class="access-panel__label" data-i18n="access.letterSpacing">Интервал букв</p>
+      <div class="access-panel__btns">
+        <button onclick="setLetterSpacing('normal')">Обычный</button>
+        <button onclick="setLetterSpacing('wide')">Увеличенный</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleNav() { document.getElementById('mainNav').classList.toggle('open'); }
+  </script>
+</body>
+</html>
