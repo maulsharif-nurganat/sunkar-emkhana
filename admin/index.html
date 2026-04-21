@@ -132,6 +132,10 @@
             <div class="form-group"><label>Специальность (KZ)</label><input type="text" id="dSpecKz" /></div>
           </div>
           <div class="form-group"><label>Фото (URL)</label><input type="url" id="dPhoto" placeholder="https://..." /></div>
+          <div class="form-row">
+            <div class="form-group"><label>Участок №</label><input type="number" id="dArea" min="1" placeholder="1" /></div>
+            <div class="form-group"><label>Стаж (лет)</label><input type="number" id="dExp" min="0" placeholder="10" /></div>
+          </div>
           <div class="form-group"><label>Порядок отображения</label><input type="number" id="dOrder" value="1" min="1" /></div>
           <div class="form-group">
             <label>Расписание</label>
@@ -279,6 +283,8 @@
       document.getElementById('dSpecRu').value  = d.specialty_ru || '';
       document.getElementById('dSpecKz').value  = d.specialty_kz || '';
       document.getElementById('dPhoto').value   = d.photo || '';
+      document.getElementById('dArea').value    = d.area || '';
+      document.getElementById('dExp').value     = d.experience_years || '';
       document.getElementById('dOrder').value   = d.order || 1;
       document.getElementById('sMon').value = d.schedule?.mon || '';
       document.getElementById('sTue').value = d.schedule?.tue || '';
@@ -293,7 +299,7 @@
     function resetDoctorForm() {
       editingDoctorId = null;
       document.getElementById('doctorFormTitle').textContent = 'Добавить врача';
-      ['dNameRu','dNameKz','dSpecRu','dSpecKz','dPhoto','sMon','sTue','sWed','sThu','sFri','sSat','sSun'].forEach(id => document.getElementById(id).value = '');
+      ['dNameRu','dNameKz','dSpecRu','dSpecKz','dPhoto','dArea','dExp','sMon','sTue','sWed','sThu','sFri','sSat','sSun'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('dOrder').value = 1;
     }
 
@@ -312,6 +318,8 @@
         specialty_ru: document.getElementById('dSpecRu').value.trim(),
         specialty_kz: document.getElementById('dSpecKz').value.trim(),
         photo: document.getElementById('dPhoto').value.trim() || null,
+        area: parseInt(document.getElementById('dArea').value) || null,
+        experience_years: parseInt(document.getElementById('dExp').value) || null,
         order: parseInt(document.getElementById('dOrder').value) || 1,
         schedule: Object.keys(schedule).length ? schedule : null,
       };

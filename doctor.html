@@ -237,6 +237,10 @@
           <div>
             <h1 class="doctor-profile__name">${name}</h1>
             <p class="doctor-profile__specialty">${specialty}</p>
+            <div style="display:flex;gap:24px;margin-bottom:24px;flex-wrap:wrap">
+              ${data.area ? `<span style="font-size:.9rem;color:var(--text-sec)">🏠 Участок №${data.area}</span>` : ''}
+              ${data.experience_years ? `<span style="font-size:.9rem;color:var(--text-sec)">⭐ Стаж: ${data.experience_years} ${data.experience_years === 1 ? 'год' : data.experience_years < 5 ? 'года' : 'лет'}</span>` : ''}
+            </div>
             <h2 style="font-size:1.1rem;font-weight:600;margin-bottom:16px">Расписание приёма</h2>
             <table class="schedule-full">
               <thead><tr><th>День</th><th>Время</th></tr></thead>
